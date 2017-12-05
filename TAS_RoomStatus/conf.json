@@ -1,0 +1,50 @@
+{
+    "useprotocol": "coap",
+    "usesecure": "disable",
+    "cse": {
+        "host": "192.168.0.7",
+        "port": "7579",
+        "name": "Team428",
+        "id": "/Team428",
+        "mqttport": "1883"
+    },
+    "ae": {
+        "id": "ae-test1",
+        "parent": "/Team428",
+        "name": "ae-test1",
+        "appid": "0.2.481.1.2",
+        "port": "9727",
+        "bodytype": "json",
+        "tasport": "3105"
+    },
+    "cnt": [
+        {
+            "parent": "/Team428/ae-test1",
+            "name": "cnt-ultrasonic"
+        },
+        {
+            "parent": "/Team428/ae-test1",
+            "name": "cnt-ultrasonic2"
+        },
+        {
+            "parent": "/Team428/ae-test1",
+            "name": "cnt-ultrasonic3"
+        },
+        {
+            "parent": "/Team428/ae-test1",
+            "name": "cnt-ultrasonic4"
+        }
+    ],
+    "sub": [
+        {
+            "parent": "/Team428/ae-test1/cnt-ultrasonic2",
+            "name": "sub-ctrl",
+            "nu": "mqtt://192.168.0.7/ae-test1"
+        }
+    ],
+    "acp": {
+        "parent": "/Team428/ae-test1",
+        "name": "acp-ae-test1",
+        "id": "ae-test1"
+    }
+}
