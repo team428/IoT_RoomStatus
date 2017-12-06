@@ -24,32 +24,6 @@ def index():
 
 	return render_template('index.html', name='Joe')
 
-@app.route('/uploader', methods = ['GET', 'POST'])
-def upload_file():
-	if request.method == 'POST':
-		if('file' not in request.files or 
-			request.form['casename'] == ''):
-			return redirect(url_for('index'))
-
-		print request.form
-		pcapfile = request.files['file']
-		reqCasename = request.form['casename']
-
-		if('do-isp' in request.form):
-			doIsp = request.form['do-isp']
-		#print doIsp
-		filename = secure_filename(pcapfile.filename)
-		pcapfile.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-
-		return redirect(url_for('show_result_page', casename=reqCasename))
-
-@app.route('/result_page')
-@app.route('/result_page/<casename>')
-def show_result_page(casename=None):
-	print casename
-	return render_template('result.html', casename=casename)
-
-
 @app.route('/receiver', methods = ['POST'])
 def worker():
 	# read json + reply
@@ -61,16 +35,6 @@ def worker():
 		result += str(item['make']) + '\n'
 
 	return result
-
-
-
-
-
-@app.route('/hello')
-def hellopy():
-
-	return "hello"
-
 
 
 if __name__ == '__main__':
