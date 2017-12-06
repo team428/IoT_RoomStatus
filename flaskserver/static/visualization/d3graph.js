@@ -13,10 +13,13 @@ var ddata=[];
 
 var average_tick=10;
 
-drawScale();
-drawGraph(ddata, "graphline", "cardinal");
+drawScale("#ujeongdang-graph");
+drawGraph(ddata, "graphline", "cardinal", "#ujeongdang-graph");
 
-function drawGraph(dataSet, cssClassName, type){
+drawScale("#ujeongdang-graph");
+drawGraph(ddata, "graphline", "cardinal", "#ujeongdang-graph");
+
+function drawGraph(dataSet, cssClassName, type, targetID){
 
 	var area = d3.svg.area()
 	  .x(function(d, i){
@@ -30,7 +33,7 @@ function drawGraph(dataSet, cssClassName, type){
 		})
 	  .interpolate(type)
 
-	var lineElements = d3.select("#myGraph2")
+	var lineElements = d3.select(targetID)
 	  .append("path")
 	  .attr("class", "line "+cssClassName)
 	  .attr("d", area(dataSet))
@@ -42,11 +45,11 @@ function drawGraph(dataSet, cssClassName, type){
 		.remove()
 }
 
-function drawScale(){
+function drawScale(targetID){
 	var average_tick_help=d3.extent ( ddata , function ( d ) { return d['time'] ; } );
 	average_tick = (average_tick_help[1]-average_tick_help[0]) / ( 60 * 1000 * 9);
 
-	var vis = d3.select("#myGraph2")
+	var vis = d3.select(targetID)
 		.append("svg:svg")
 		.attr("width", svgWidth)
 		.attr("height", svgHeight);
@@ -87,7 +90,7 @@ function drawScale(){
 			.attr("dy","0.7em")
 			.style("text-anchor","start")
 
-	var grid = d3.select("#myGraph2").append("g")
+	var grid = d3.select(targetID).append("g")
 
 	var rangeX = d3.range( margin.left , width , 70 );
 	var rangeY = d3.range( margin.bottom , height , 70 );

@@ -37,9 +37,6 @@ function drawGraph(dataSet, cssClassName, type){
 		.transition()
 		.duration(2000)
 
-	lineElements
-		.exit()
-		.remove()
 }
 
 function drawScale(){
