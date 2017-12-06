@@ -48,6 +48,7 @@
 	<main id="main">
 		<div id="main-menu" class="tab-left">
 			Main content
+
 			<script>
 				var test = "\r\n Javascript Test"
 				document.write(test)
@@ -66,18 +67,20 @@
 			<svg id="ujeongdang-map"></svg>
 
 			<h1>Log Graph</h1>
+
 			<svg id="ujeongdang-graph"></svg>
 		</div>
 	</main>
 </section>
 <!-- script content -->
+
 <script type="text/javascript" src="{{ url_for('static',filename='left-main.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static',filename='main.js') }}"></script>
+
 
 <script src="{{url_for('static',filename='visualization/d3graph.js' )}}"></script>
 
 <script src="{{url_for('static',filename='visualization/d3map.js' )}}"></script>
-
 </body>
 
 </html>
