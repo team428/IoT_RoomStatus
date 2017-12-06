@@ -1,0 +1,76 @@
+<form action="/uploader" method=GET>
+	<p>
+		<input type="submit" value="getdata">
+	</p>
+</form>
+
+
+<script>
+var options = {
+	hostname:"192.168.0.7",
+	port: 
+}
+crtci = function(count, content, callback) {
+
+};
+
+
+var results_ci = {};
+var bodyString = '';
+
+results_ci['m2m:cin'] = {};
+results_ci['m2m:cin'].con = content;
+
+bodyString = JSON.stringify(results_ci);
+
+var parent_path = conf.cnt[count].parent + '/' + conf.cnt[count].name;
+
+http_request(conf.cnt[count].parent + '/' + conf.cnt[count].name, 'post', '4', bodyString, function (res, res_body) {
+    callback(res.headers['x-m2m-rsc'], res_body, parent_path);
+});
+
+
+function http_request(path, method, ty, bodyString, callback) {
+var options = {
+    hostname: conf.cse.host,
+    port: conf.cse.port,
+    path: path,
+    method: method,
+    headers: {
+        'X-M2M-RI': "12345",
+        'Accept': 'application/' + conf.ae.bodytype,
+        'X-M2M-Origin': conf.ae.id
+    }
+};
+
+if(bodyString.length > 0) {
+    options.headers['Content-Length'] = bodyString.length;
+}
+
+var a = (ty==='') ? '': ('; ty='+ty);
+options.headers['Content-Type'] = 'application/vnd.onem2m-res+' + conf.ae.bodytype + a;
+
+var http = require('http');
+var res_body = '';
+var req = http.request(options, function (res) {
+
+    res.on('data', function (chunk) {
+        res_body += chunk;
+    });
+
+    res.on('end', function () {
+        callback(res, res_body);
+    });
+});
+
+req.on('error', function (e) {
+    console.log('problem with request: ' + e.message);
+});
+
+req.write(bodyString);
+req.end();
+}
+
+</script>
+
+

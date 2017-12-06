@@ -11,8 +11,8 @@
 	<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
 	<!-- css -->
 	<link rel="stylesheet", href="{{ url_for('static',filename='main.css') }}">
-	<link rel="stylesheet", href="{{url_for('static',filename='visualization/map.css')}}"
-	<link rel="stylesheet", href="{{url_for('static',filename='visualization/graph.css')}}"
+	<link rel="stylesheet", href="{{url_for('static',filename='visualization/map.css')}}">
+	<link rel="stylesheet", href="{{url_for('static',filename='visualization/graph.css')}}">
 </head>
 
 
@@ -39,7 +39,7 @@
 		<ul class="leftbar-content">
 			<li class="active" rel="main-menu"> Main </li>
 			<li rel="student-restaurant">Student Restaurant</li>	
-			<li rel="ujungdang">UJungDang</li>	
+			<li rel="ujeongdang">ujeongdang</li>	
 		</ul>
 	</div>
 
@@ -55,15 +55,15 @@
 		</div>
 		<div id="student-restaurant" class="tab-left">
 			<h1>Student Restaurant Map</h1>
-			<svg id="#student-restaurant-map"></svg>
+			<svg id="student-restaurant-map"></svg>
 
 			<h1>Log Graph</h1>
-			<svg id="#student-restaurant-graph"></svg>
+			<svg id="student-restaurant-graph"></svg>
 
 		</div>
 		<div id="ujeongdang" class="tab-left">
-			<h1>ujeongdang Map</h1>
-			<svg id="#ujungdang-map"></svg>
+			<h1>Ujeongdang Map</h1>
+			<svg id="ujeongdang-map"></svg>
 
 			<h1>Log Graph</h1>
 			<svg id="ujeongdang-graph"></svg>
@@ -75,6 +75,7 @@
 <script type="text/javascript" src="{{ url_for('static',filename='main.js') }}"></script>
 
 <script src="{{url_for('static',filename='visualization/d3graph.js' )}}"></script>
+
 <script src="{{url_for('static',filename='visualization/d3map.js' )}}"></script>
 
 </body>
