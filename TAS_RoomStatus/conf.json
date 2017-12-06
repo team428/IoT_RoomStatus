@@ -20,7 +20,11 @@
     "cnt": [
         {
             "parent": "/Team428/ae-test1",
-            "name": "cnt-ultrasonic"
+            "name": "cnt-ultrasonic0"
+        },
+        {
+            "parent": "/Team428/ae-test1",
+            "name": "cnt-ultrasonic1"
         },
         {
             "parent": "/Team428/ae-test1",
@@ -29,15 +33,11 @@
         {
             "parent": "/Team428/ae-test1",
             "name": "cnt-ultrasonic3"
-        },
-        {
-            "parent": "/Team428/ae-test1",
-            "name": "cnt-ultrasonic4"
         }
     ],
     "sub": [
         {
-            "parent": "/Team428/ae-test1/cnt-ultrasonic2",
+            "parent": "/Team428/ae-test1/cnt-ultrasonic1",
             "name": "sub-ctrl",
             "nu": "mqtt://192.168.0.7/ae-test1"
         }

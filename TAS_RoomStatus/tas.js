@@ -34,8 +34,8 @@ var t_count = 0;
 function timer_upload_action() {
     if (sh_state == 'crtci') {
         for (var j = 0; j < conf.cnt.length; j++) {
-            if (conf.cnt[j].name == 'cnt-ultrasonic') {
-                var content = JSON.stringify({value: 'TAS' + raw_data});
+            if (conf.cnt[j].name == 'cnt-ultrasonic0') {
+                var content = JSON.stringify({raw_data});
                 console.log('thyme cnt-ultrasonic ' + content + ' ---->');
                 sh_adn.crtci(j, content, this, function (status, res_body, to, socket) {
                     console.log('x-m2m-rsc : ' + status + ' <----');

@@ -7,6 +7,7 @@ MINDEGREE = 2.7
 trigger = 24
 echo    = 23
 servopin   = 18
+result = ""
 
 wheelspeed = -5/(MAXDEGREE-MINDEGREE)/4
 
@@ -31,8 +32,7 @@ try:
         GPIO.output(trigger, False)
         servo.ChangeDutyCycle(currentDegree)  
         time.sleep(0.2)
-        print "Degree: ",printDegree, "\'"
-		
+        result += "De: " + str(printDegree)
         ## ultrasonic part
         GPIO.output(trigger, True)
         time.sleep(0.00001)
@@ -45,12 +45,19 @@ try:
 
         ## Get distance
         pulse_duration = pulse_end - pulse_start
-        distance = pulse_duration * 17000
-        distance = round(distance, 2)
-        print "Distance: ", distance, "cm"
-        
+        tmp = round(pulse_duration * 17000, 2)
+	if(tmp <200):
+		distance = pulse_duration * 17000
+        	distance = round(distance, 2)
+	else:
+		distance = 0
+        result += " Di: " + str(distance) 
+	
+	print result
+	result = ""
+	
         currentDegree = currentDegree + wheelspeed
-        printDegree = round((currentDegree- MINDEGREE)/(MAXDEGREE - MINDEGREE)*90, 2)
+        printDegree = round((currentDegree- MINDEGREE)/(MAXDEGREE - MINDEGREE) * 90, 2)
 
         if((currentDegree > MAXDEGREE) or (currentDegree < MINDEGREE)):
             wheelspeed = -wheelspeed
