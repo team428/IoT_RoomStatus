@@ -1,0 +1,82 @@
+<!doctype html>
+
+<head>
+	<title> Sejong Room Status </title>
+	<meta charset="utf-8">
+	<meta name="description" content="">
+	<meta name="viewport" conten="width=device-widthh, initial-scale=1">
+	<!-- jquery -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<!-- d3.js -->
+	<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+	<!-- css -->
+	<link rel="stylesheet", href="{{ url_for('static',filename='main.css') }}">
+	<link rel="stylesheet", href="{{url_for('static',filename='visualization/map.css')}}">
+	<link rel="stylesheet", href="{{url_for('static',filename='visualization/graph.css')}}">
+</head>
+
+
+
+<body>
+
+<!-- Header Section -->
+<section>
+	<div id="header">
+		<h1> <a href="{{url_for('index')}}">Sejong Room Status</a> </h1>
+		<ul class="header-content">
+			<li>
+				<h2><a href="/">Home</a></h2>
+			</li>
+		</ul>
+	</div>
+</section>
+
+
+<!-- Left menu bar -->
+<section>
+	<div id="left-sidebar">
+		<h2> Menu </h2>
+		<ul class="leftbar-content">
+			<li class="active" rel="main-menu"> Main </li>
+			<li rel="student-restaurant">Student Restaurant</li>	
+			<li rel="ujeongdang">ujeongdang</li>	
+		</ul>
+	</div>
+
+
+<!-- Default main menu -->
+	<main id="main">
+		<div id="main-menu" class="tab-left">
+			 <img src="{{url_for('static', filename='sejong.jpg')}}" </a>
+
+		</div>
+		<div id="student-restaurant" class="tab-left">
+			<h1>Student Restaurant Map</h1>
+			<svg id="student-restaurant-map"></svg>
+
+			<h1>Log Graph</h1>
+			<svg id="student-restaurant-graph"></svg>
+
+		</div>
+		<div id="ujeongdang" class="tab-left">
+			<h1>Ujeongdang Map</h1>
+			<svg id="ujeongdang-map"></svg>
+
+			<h1>Log Graph</h1>
+
+			<svg id="ujeongdang-graph"></svg>
+		</div>
+	</main>
+</section>
+<!-- script content -->
+
+<script type="text/javascript" src="{{ url_for('static',filename='left-main.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static',filename='main.js') }}"></script>
+
+
+<script src="{{url_for('static',filename='visualization/d3graph.js' )}}"></script>
+
+<script src="{{url_for('static',filename='visualization/d3map.js' )}}"></script>
+</body>
+
+</html>
